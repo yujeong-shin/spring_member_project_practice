@@ -1,15 +1,36 @@
 <!DOCTYPE html>
-<!-- 템플릿 엔진(JSP, Thymlear)을 사용-->
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Home</title>
+  <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif; /* 한국어 폰트로 변경 */
+            background-color: #f2e8da; /* 연한 베이지색 배경 */
+            margin: 0;
+            padding: 0;
+            color: #333; /* 기본 텍스트 컬러 */
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff; /* 흰색 텍스트 */
+            background-color: #ffbe98; /* 피치 퍼즈 색 버튼 배경 */
+            padding: 8px 16px;
+            border-radius: 5px;
+            margin-left: 5px; /* 왼쪽 마진 추가 */
+            display: inline-block; /* 인라인 블록 요소로 설정하여 줄바꿈 방지 */
+        }
+
+        a:hover {
+            background-color: #fa9a85; /* 버튼에 호버 효과 시 색 변경 */
+        }
+    </style>
 </head>
 <body>
 <div th:fragment="headerFragment">
-  <a href="/members/create">회원등록</a>
-  <a href="/members">회원목록조회</a>
+    <a href="/members/create">회원등록</a>
+    <a href="/members">회원목록조회</a>
 </div>
 </body>
 </html>

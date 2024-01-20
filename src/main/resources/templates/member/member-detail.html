@@ -1,23 +1,94 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>회원 상세조회</title>
     <style>
-        #update-form{
+        body {
+            font-family: 'Noto Sans KR', sans-serif; /* 한국어 폰트로 변경 */
+            background-color: #f2e8da; /* 연한 베이지색 배경 */
+            margin: 0;
+            padding: 0;
+            color: #333; /* 기본 텍스트 컬러 */
+        }
+
+        a, button {
+            text-decoration: none;
+            color: #fff; /* 흰색 텍스트 */
+            background-color: #ffbe98; /* 피치 퍼즈 색 버튼 배경 */
+            padding: 8px 16px;
+            border-radius: 5px;
+            margin-left: 5px;
+            cursor: pointer;
+            display: inline-block;
+            border: none; /* 테두리 제거 */
+        }
+
+        a:hover, button:hover {
+            background-color: #fa9a85; /* 버튼에 호버 효과 시 색 변경 */
+        }
+
+        th {
+            background-color: #279d9f; /* 피치 퍼즈 색 배경 */
+            padding: 15px;
+            text-align: center; /* 가운데 정렬 */
+            color: #fff; /* 흰색 텍스트 */
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            text-align: center; /* 테이블 가운데 정렬 */
+        }
+
+        #update-form {
             display: none;
+            margin: 20px auto; /* 수정 폼의 마진 추가 */
+            width: 80%; /* 수정 폼의 너비 설정 */
+            max-width: 400px; /* 수정 폼의 최대 너비 설정 */
+            padding: 20px; /* 수정 폼의 패딩 추가 */
+            background-color: #fff; /* 수정 폼의 배경색 설정 */
+            border: 1px solid #ddd; /* 수정 폼의 테두리 설정 */
+            border-radius: 5px; /* 수정 폼의 모서리 둥글게 설정 */
+        }
+
+        #update-form p {
+            margin-bottom: 15px; /* 수정 폼의 각 입력 요소 간격 설정 */
+        }
+
+        #update-form label {
+            display: block; /* 라벨을 블록 요소로 설정하여 위아래로 정렬 */
+            margin-bottom: 5px; /* 라벨 아래 여백 추가 */
+        }
+
+        #update-form input {
+            width: 100%; /* 입력 필드를 100%로 설정하여 폼 안에서 꽉 차게 표시 */
+            padding: 8px; /* 입력 필드의 내부 패딩 설정 */
+            border: 1px solid #ccc; /* 입력 필드의 테두리 설정 */
+            border-radius: 3px; /* 입력 필드의 모서리 둥글게 설정 */
+            margin-bottom: 10px; /* 입력 필드 아래 여백 추가 */
+        }
+
+        #update-form input[type="submit"] {
+            background-color: #279d9f;
+            color: #fff; /* 흰색 텍스트 */
+            cursor: pointer;
+        }
+
+        #update-form input[type="submit"]:hover {
+            background-color: #137071; /* 버튼에 호버 효과 시 색 변경 */
         }
     </style>
+
     <script>
-        function showUpdateForm(){
-            document.getElementById("update-form").style.display = 'block';
-        }
+    function showUpdateForm() {
+        document.getElementById("update-form").style.display = 'block';
+    }
     </script>
 </head>
 <body>
 <div th:replace="member/header :: headerFragment"></div>
-
 <table>
     <tr>
         <th>이름</th>
@@ -32,6 +103,7 @@
         <td th:text="${member.create_time}"></td>
     </tr>
 </table>
+
 <button onclick="showUpdateForm()">수정</button><a th:href="@{/member/delete(id=${member.id})}"><button>삭제</button></a>
 <div id="update-form">
     <form action="/member/update" method="POST">
